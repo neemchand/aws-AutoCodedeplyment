@@ -1,0 +1,37 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/php:7.1.5-browsers
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mysql:9.4
+
+    working_directory: ~/neemchand/testneem
+
+     steps:
+        - run:
+            name: Install awscli
+            command: sudo pip install awscli
+        - run:
+            name: Deploy to S3
+            command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
+
+  workflows:
+    version: 2
+    build-deploy:
+      jobs:
+        - build
+        - deploy:
+            requires:
+              - build
+            filters:
+              branches:
+                only: master
