@@ -1,24 +1,15 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/php:7.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
 
     working_directory: ~/neemchand/testneem
     steps:
+       - checkout
       - run:
-            name: Install pip
-            command:  sudo apt-get update && sudo apt-get install python-pip python-dev 
+            name: Install System Dependencies
+            command: sudo apt-get update && sudo apt install python-pip
         - run:
             name: Install awscli
             command: sudo pip install awscli
@@ -29,4 +20,4 @@ jobs:
     version: 2
     test:
       jobs:
-       - build        
+       - build
