@@ -12,11 +12,14 @@ jobs:
        - run:
             name: configure configure
             command: aws configure set default.s3.signature_version s3v4
-       - run:
-           name: Deploy to S3
-           command: aws s3 sync . s3://neem-test-bucket --region ap-south-1 --delete
     workflows:
     version: 2
     test:
       jobs:
        - build
+    deployment:
+      prod:
+      branch: master
+       commands:
+       - aws s3 sync . s3://neem-test-bucket/codedeploy --region ap-south-1 --delete
+
