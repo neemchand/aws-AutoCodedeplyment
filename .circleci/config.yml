@@ -9,9 +9,9 @@ jobs:
        - run:
             name: Install awscli
             command: apt-get update && apt-get install -y awscli
-        - run:
-            name: Deploy to S3
-            command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
+       - run:
+           name: Deploy to S3
+           command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
     workflows:
     version: 2
     test:
