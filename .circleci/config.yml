@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1-node-browsers
-      
+
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -18,10 +18,15 @@ jobs:
     steps:
       - run:
             name: Install pip
-            command: apt install python-pip python-dev 
+            command:  sudo apt-get update && sudo apt-get install python-pip python-dev 
         - run:
             name: Install awscli
             command: sudo pip install awscli
         - run:
             name: Deploy to S3
             command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
+    workflows:
+    version: 2
+    test:
+      jobs:
+       - build        
