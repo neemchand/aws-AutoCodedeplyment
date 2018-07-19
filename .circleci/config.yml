@@ -2,17 +2,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-node-browsers
+      - image: circleci/php:7.1.5-browsers
 
     working_directory: ~/neemchand/testneem
     steps:
-       - checkout
-      - run:
-            name: Install System Dependencies
-            command: sudo apt-get update && sudo apt install python-pip
-        - run:
+      - checkout
+       - run:
             name: Install awscli
-            command: sudo pip install awscli
+            command: apt-get update && apt-get install -y awscli
         - run:
             name: Deploy to S3
             command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
