@@ -10,6 +10,9 @@ jobs:
             name: Install awscli
             command: sudo apt-get update && sudo apt-get install -y awscli
        - run:
+            name: configure configure
+            command: aws configure set default.s3.signature_version s3v4
+       - run:
            name: Deploy to S3
            command: aws s3 sync . s3://neem-test-bucket/codedeploy --delete
     workflows:
