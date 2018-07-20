@@ -16,6 +16,8 @@ jobs:
            name: Deploy to S3
            command: aws s3 sync . s3://testdeploycode --region ap-south-1 --delete
     deploy:
+       machine:
+        enabled: true
         staging:
         branch: master
         codedeploy:
