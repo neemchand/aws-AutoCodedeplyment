@@ -16,18 +16,11 @@ jobs:
            name: Deploy to S3
            command: aws s3 sync . s3://testdeploycode --region ap-south-1 --delete
     deploy:
-      staging:
+        staging:
         branch: master
         codedeploy:
           first-auto-deployment:
-            application_root: /
-            revision_location:
-              revision_type: S3
-              s3_location:
-                bucket: testdeploycode
-                key_pattern: application_root-{BRANCH}-{SHORT_COMMIT}
-            region: ap-south-1
-            deployment_group: first-auto-deployment
+        deployment_group: first-auto-deployment
     workflows:
       version: 2
       build-and-deploy:
