@@ -13,13 +13,14 @@ jobs:
             name: configure configure
             command: aws configure set default.s3.signature_version s3v4
        - run:
-           name: Deploy to S3
-           command: aws deploy push \
-                      --application-name code_deployment_app \
-                      --description "This is a revision for the application code_deployment_app" \
-                      --ignore-hidden-files \
-                      --s3-location s3://testdeploycode/testdeployapp44.zip \
-                      --source .
+           name: build to S3
+           command: |
+            aws deploy push \
+            --application-name code_deployment_app \
+            --description "This is a revision for the application code_deployment_app" \
+            --ignore-hidden-files \
+            --s3-location s3://testdeploycode/testdeployapp.zip \
+            --source .
     deploy:
         staging:
         branch: master
