@@ -14,7 +14,12 @@ jobs:
             command: aws configure set default.s3.signature_version s3v4
        - run:
            name: Deploy to S3
-           command: aws s3 sync . s3://testdeploycode --region ap-south-1 --delete
+           command: aws deploy push \
+                    --application-name first-auto-deployment \
+                    --description "This is a revision for the application first-auto-deployment" \
+                    --ignore-hidden-files \
+                    --s3-location s3://testdeploycode/testdeploy.zip \
+                    --source .
     deploy:
        machine:
         enabled: true
