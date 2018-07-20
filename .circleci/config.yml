@@ -13,11 +13,8 @@ jobs:
             name: configure configure
             command: aws configure set default.s3.signature_version s3v4
        - run:
-            name: create custom build 
-            command: sudo zip -r testneem.zip *
-       - run:
            name: Deploy to S3
-           command: aws s3 sync testneem.zip s3://testdeploycode --region ap-south-1 --delete
+           command: aws s3 sync . s3://testdeploycode --region ap-south-1 --delete
     deploy:
        machine:
         enabled: true
