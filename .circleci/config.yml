@@ -28,7 +28,7 @@ jobs:
      - checkout
      - run: ls 
      - run: pwd
-     - run: ./aws-code-deploy.sh
+     - run: sudo ./aws-code-deploy.sh
 
     deploy:
       machine:
