@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: odarriba/docker-gcloud-kubectl:latest
+      - image: circleci/php:7.1.5-browsers
     working_directory: ~/testneem
     environment:
         DEPLOY_DIR: $HOME/deploy
@@ -25,11 +25,9 @@ jobs:
         AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "${CIRCLE_BRANCH} (#${CIRCLE_SHA1:0:7})"
         AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI "
     steps:
-     - run: ls 
      - run: whoami
      - checkout
      - run: ls -l
-     - run: pwd
      - run: chmod 0777 aws-code-deploy.sh
      - run: ./aws-code-deploy.sh
 
