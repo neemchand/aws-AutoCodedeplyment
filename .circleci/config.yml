@@ -35,5 +35,15 @@ jobs:
         branch: master
         commands:
           - bash bin/aws-code-deploy.sh
+
+    workflows:
+      version: 2
+      build-and-deploy:
+        jobs:
+          - build
+          - deploy:
+              requires:
+                - build
+
         
     
