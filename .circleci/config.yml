@@ -26,8 +26,8 @@ jobs:
         AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI "
     steps:
       - run:
-          name: Update PATH and Define Environment Variable at Runtime
-          command: bash bin/aws-code-deploy.sh    
+          name: build and deploy via ssh
+          command: bash /bin/aws-code-deploy.sh    
     deploy:
       machine:
         enabled: true
