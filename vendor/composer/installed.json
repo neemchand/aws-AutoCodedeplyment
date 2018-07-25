@@ -3943,6 +3943,38 @@
         ]
     },
     {
+        "name": "techpivot/aws-code-deploy",
+        "version": "1.0.8",
+        "version_normalized": "1.0.8.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/techpivot/aws-code-deploy.git",
+            "reference": "374089b9b11135ae504cf60268e847c32f869d28"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/techpivot/aws-code-deploy/zipball/374089b9b11135ae504cf60268e847c32f869d28",
+            "reference": "374089b9b11135ae504cf60268e847c32f869d28",
+            "shasum": ""
+        },
+        "time": "2017-07-16T22:31:19+00:00",
+        "bin": [
+            "bin/aws-code-deploy.sh"
+        ],
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "AWS Code Deploy Bash Runner",
+        "keywords": [
+            "Code Deploy",
+            "TechPivot",
+            "aws"
+        ]
+    },
+    {
         "name": "theseer/tokenizer",
         "version": "1.1.0",
         "version_normalized": "1.1.0.0",

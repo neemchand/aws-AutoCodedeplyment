@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7904d07d1e1765a0a199aa11d6301a3",
+    "content-hash": "f08754537522dd5fe0e2a767e8a3527c",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3913,6 +3913,36 @@
             ],
             "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
             "time": "2018-03-14T21:51:39+00:00"
+        },
+        {
+            "name": "techpivot/aws-code-deploy",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/techpivot/aws-code-deploy.git",
+                "reference": "374089b9b11135ae504cf60268e847c32f869d28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/techpivot/aws-code-deploy/zipball/374089b9b11135ae504cf60268e847c32f869d28",
+                "reference": "374089b9b11135ae504cf60268e847c32f869d28",
+                "shasum": ""
+            },
+            "bin": [
+                "bin/aws-code-deploy.sh"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "AWS Code Deploy Bash Runner",
+            "keywords": [
+                "Code Deploy",
+                "TechPivot",
+                "aws"
+            ],
+            "time": "2017-07-16T22:31:19+00:00"
         },
         {
             "name": "theseer/tokenizer",
