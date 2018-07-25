@@ -25,7 +25,7 @@ jobs:
         AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "${CIRCLE_BRANCH} (#${CIRCLE_SHA1:0:7})"
         AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI "
     steps:
-     - run: aws-code-deploy.sh
+     - run: bash aws-code-deploy.sh
 
     deploy:
       machine:
