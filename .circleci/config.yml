@@ -22,7 +22,7 @@ jobs:
         AWS_CODE_DEPLOY_S3_BUCKET: testdeploycode
         AWS_CODE_DEPLOY_S3_LIMIT_BUCKET_FILES: 10
         AWS_CODE_DEPLOY_S3_SSE: true
-        AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "${CIRCLE_BRANCH} (#${CIRCLE_SHA1:0:7})"
+        AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "test"
         AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI "
       steps:  
        - run:
