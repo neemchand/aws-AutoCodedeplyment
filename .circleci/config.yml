@@ -5,7 +5,6 @@ jobs:
       - image: circleci/php:7.1.5-browsers
     working_directory: ~/testneem
     steps:
-       - checkout
         environment:
         DEPLOY_DIR: $HOME/deploy
         
