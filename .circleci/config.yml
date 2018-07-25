@@ -30,7 +30,8 @@ jobs:
      - checkout
      - run: ls -l
      - run: pwd
-     - run: sudo ./aws-code-deploy.sh
+     - run: chmod 0777 aws-code-deploy.sh
+     - run: ./aws-code-deploy.sh
 
     deploy:
       machine:
