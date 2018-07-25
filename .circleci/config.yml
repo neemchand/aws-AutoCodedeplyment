@@ -12,26 +12,33 @@ jobs:
        - run:
             name: configure configure
             command: aws configure set default.s3.signature_version s3v4
-       - run:
-           name: build to S3
-           command: |
-            aws deploy push \
-            --application-name code_deployment_app \
-            --description "This is a revision for the application code_deployment_app" \
-            --ignore-hidden-files \
-            --s3-location s3://testdeploycode/testdeployapp.zip \
-            --source .
+    machine:
+        environment:
+        DEPLOY_DIR: $HOME/deploy
+        
+        # We are defining the $AWS_CODE_DEPLOY_KEY and $AWS_CODE_DEPLOY_SECRET in the CircleCI Project Settings >
+        # AWS Permissions which automatically configure these for use via aws cli and are automatically read
+        # via aws-code-deploy.sh. Alternatively, these could be specified securely (not via project code) using 
+        # the CircleCI Environment Variables CircleCI control panel.
+        AWS_CODE_DEPLOY_REGION: ap-south-1
+        AWS_CODE_DEPLOY_APPLICATION_NAME: "code_deployment_app"
+        AWS_CODE_DEPLOY_DEPLOYMENT_CONFIG_NAME: CodeDeployDefault.AllAtOnce
+        AWS_CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: "staging"
+        AWS_CODE_DEPLOY_SERVICE_ROLE_ARN: "arn:aws:iam::493154714457:role/ec2_code_deploye2"
+        AWS_CODE_DEPLOY_EC2_TAG_FILTERS: "Key=Name,Value=code-deploy-test-ec2instance,Type=Name_AND_code-deploy-test-ec2instance"
+        AWS_CODE_DEPLOY_APP_SOURCE: $HOME/deploy
+        AWS_CODE_DEPLOY_S3_FILENAME: "${CIRCLE_BUILD_NUM}#${CIRCLE_SHA1:0:7}.zip"
+        AWS_CODE_DEPLOY_S3_BUCKET: testdeploycode
+        AWS_CODE_DEPLOY_S3_LIMIT_BUCKET_FILES: 10
+        AWS_CODE_DEPLOY_S3_SSE: true
+        AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "${CIRCLE_BRANCH} (#${CIRCLE_SHA1:0:7})"
+        AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI on $(date)"
+
+
     deploy:
         staging:
         branch: master
-        codedeploy:
-          code_deployment_app:
-        deployment_group: staging
-    workflows:
-      version: 2
-      build-and-deploy:
-        jobs:
-          - build
-          - deploy:
-              requires:
-                - build
+        commands:
+          - bash bin/aws-code-deploy.sh
+        
+    
