@@ -30,12 +30,10 @@ jobs:
           command:  - bash bin/aws-code-deploy.sh
 
     deploy:
-        staging:
-        branch: master
-        commands:
-          - bash bin/aws-code-deploy.sh
+      machine:
+        enabled: true
 
-    workflows:
+workflows:
       version: 2
       build-and-deploy:
         jobs:
