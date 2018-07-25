@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1.5-browsers
+      - image: odarriba/docker-gcloud-kubectl:latest
     working_directory: ~/testneem
     environment:
         DEPLOY_DIR: $HOME/deploy
