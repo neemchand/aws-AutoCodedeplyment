@@ -1,7 +1,11 @@
 version: 2
 jobs:
   build:
-    machine:
+    docker:
+      - image: circleci/php:7.1.5-browsers
+    working_directory: ~/testneem
+    steps:
+       - checkout
         environment:
         DEPLOY_DIR: $HOME/deploy
         
@@ -22,7 +26,9 @@ jobs:
         AWS_CODE_DEPLOY_S3_SSE: true
         AWS_CODE_DEPLOY_REVISION_DESCRIPTION: "${CIRCLE_BRANCH} (#${CIRCLE_SHA1:0:7})"
         AWS_CODE_DEPLOY_DEPLOYMENT_DESCRIPTION: "Deployed via CircleCI on $(date)"
-
+       - run:
+        name: Update PATH and Define Environment Variable at Runtime
+          command:  - bash bin/aws-code-deploy.sh
 
     deploy:
         staging:
