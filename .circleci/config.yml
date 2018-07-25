@@ -27,7 +27,7 @@ jobs:
     steps:
       - run:
           name: build and deploy via ssh
-          command: ./aws-code-deploy.sh    
+          command: - bash aws-code-deploy.sh
     deploy:
       machine:
         enabled: true
