@@ -1,17 +1,6 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/php:7.1.5-browsers
-    working_directory: ~/testneem
-    steps:
-       - checkout
-       - run:
-            name: Install awscli
-            command: sudo apt-get update && sudo apt-get install -y awscli
-       - run:
-            name: configure configure
-            command: aws configure set default.s3.signature_version s3v4
     machine:
         environment:
         DEPLOY_DIR: $HOME/deploy
