@@ -29,12 +29,16 @@ jobs:
      - checkout
      - run: ls -l
      - run: chmod 0777 aws-code-deploy.sh
-     - run: ./aws-code-deploy.sh
-
-    deploy:
+     
+  deploy:
       machine:
         enabled: true
-
+          steps:
+           - run: whoami
+           - checkout
+           - run: ls -l
+           - run: chmod 0777 aws-code-deploy.sh
+           - run: ./aws-code-deploy.sh
 workflows:
       version: 2
       build-and-deploy:
@@ -43,6 +47,4 @@ workflows:
           - deploy:
               requires:
                 - build
-
-        
     
