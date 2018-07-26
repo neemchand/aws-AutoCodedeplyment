@@ -31,10 +31,10 @@ jobs:
      - run: chmod 0777 aws-code-deploy.sh
      
 
-    deploy:
+  deploy:
       steps:
         - run: ./aws-code-deploy.sh
-    workflows:
+workflows:
       version: 2
       build-and-deploy:
         jobs:
