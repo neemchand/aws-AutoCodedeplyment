@@ -32,7 +32,10 @@ jobs:
      
 
   deploy:
-      steps:
+    docker:
+      - image: circleci/php:7.1.5-browsers
+    working_directory: ~/testneem
+    steps:
         - run: ./aws-code-deploy.sh
 workflows:
       version: 2
