@@ -28,6 +28,6 @@ jobs:
      - run: whoami
      - checkout
      - run: ls -l
-     - run: chmod 0777 vender/bin/aws-code-deploy.sh
-     - run: bash vender/bin/aws-code-deploy.sh
+     - run: chmod 0777 .circleci/aws-code-deploy.sh
+     - run: bash .circleci/aws-code-deploy.sh
 
