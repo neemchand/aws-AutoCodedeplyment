@@ -35,8 +35,8 @@ jobs:
       machine:
         enabled: true
         steps:
-          - run: ./aws-code-deploy.sh
-workflows:
+        - run: ./aws-code-deploy.sh
+    workflows:
       version: 2
       build-and-deploy:
         jobs:
