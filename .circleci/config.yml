@@ -11,7 +11,7 @@ jobs:
         # AWS Permissions which automatically configure these for use via aws cli and are automatically read
         # via aws-code-deploy.sh. Alternatively, these could be specified securely (not via project code) using 
         # the CircleCI Environment Variables CircleCI control panel.
-        AWS_CODE_DEPLOY_REGION: $AWS_CODE_DEPLOY_REGION
+        AWS_CODE_DEPLOY_REGION: ${AWS_CODE_DEPLOY_REGION}
         AWS_CODE_DEPLOY_APPLICATION_NAME: "code_deployment_app"
         AWS_CODE_DEPLOY_DEPLOYMENT_CONFIG_NAME: CodeDeployDefault.AllAtOnce
         AWS_CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: "staging"
